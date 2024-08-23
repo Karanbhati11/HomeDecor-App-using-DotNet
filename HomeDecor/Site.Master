@@ -1,0 +1,138 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="HomeDecor.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - HomeDecor</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Satisfy&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <header class="overlay">
+            <div class="container">
+                <div class="d-none d-md-flex justify-content-between align-items-center">
+                    <div class="logo">
+                        <a href="~/">
+                            <asp:Image ID="logo" runat="server" CssClass="img-fluid" ImageUrl="~/Images/logo.png" AlternateText="logo" />
+                        </a>
+                    </div>
+                    <nav class="main-navbar">
+                        <ul class="nav">
+                            <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" runat="server" href="~/Products">Products</a></li>
+                            <li class="nav-item" id="loginNav" runat="server"><a class="nav-link" runat="server" href="~/Login">Login</a></li>
+                            <li class="nav-item" id="logoutNav" runat="server" visible="false">
+                                <asp:LinkButton ID="LogoutButton" runat="server" OnClick="Logout_Click" CssClass="nav-link">Logout</asp:LinkButton>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="header-left">
+                        <div class="cart-item">
+                            <asp:Label ID="lblWelcomeUser" runat="server" CssClass="welcome-user" Visible="false"></asp:Label>
+
+                            <a runat="server" href="~/Cart">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-md-none d-flex justify-content-between align-items-center">
+                    <div class="logo">
+                        <a href="~/">
+                            <asp:Image ID="Image1" runat="server" CssClass="img-fluid" ImageUrl="~/Images/logo.png" AlternateText="logo" />
+                        </a>
+                    </div>
+                    <div class="header-left">
+                        <asp:Label ID="lblWelcomeUserMobile" runat="server" CssClass="welcome-user-mobile" Visible="false"></asp:Label>
+                        <div class="cart-item">
+                            <a href="~/Cart">Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class=" body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <footer class="footer">
+                <div class="container">
+                    <div class="row">
+                        <!-- Logo Section -->
+                        <div class="col-md-4 footer-logo">
+                            <img class="logo-img" src="./images/logo.png" alt="Logo">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed nulla eu dui suscipit ultricies.
+                        Mauris vestibulum volutpat nisl vel cursus.
+                            </p>
+                        </div>
+
+                        <!-- Contact Info Section -->
+                        <div class="col-md-4 contact-info">
+                            <h4>Get in touch</h4>
+                            <ul class="list-unstyled">
+                                <li>University Ave, Kitchener</li>
+                                <li>+1 123-783-2495</li>
+                                <li>cozy@homedecor.com</li>
+                            </ul>
+                        </div>
+
+                        <!-- Socials Section -->
+                        <div class="col-md-4 footer-socials">
+                            <h4>Socials</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Facebook</a></li>
+                                <li><a href="#">Instagram</a></li>
+                                <li><a href="#">Twitter</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <p class="copyright">Copyright &copy; COZY  <%: DateTime.Now.Year %> - All rights reserved.</p>
+            </footer>
+        </div>
+    </form>
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/Scripts/bootstrap.js") %>
+    </asp:PlaceHolder>
+</body>
+</html>
